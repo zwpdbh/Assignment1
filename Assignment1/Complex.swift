@@ -9,11 +9,11 @@
 import Foundation
 
 public final class Complex: CustomStringConvertible, MatrixData {
-    internal var real: Float
-    internal var imag: Float
+    private var real: Float
+    private var imag: Float
     
     // computed property
-    var magnitude: Float {
+    public var magnitude: Float {
         return real*real + imag*imag
     }
     
@@ -31,36 +31,36 @@ public final class Complex: CustomStringConvertible, MatrixData {
     }
     
     // Designated initialiser
-    init(real: Float, imag: Float) {
+    public init(real: Float, imag: Float) {
         self.real = real
         self.imag = imag
     }
     
-    convenience public init() {
+    public convenience init() {
         self.init(real: 0, imag: 0)
     }
     
-    func copy() -> Complex {
+    public func copy() -> Complex {
         return Complex(real: self.real, imag: self.imag)
     }
     
-    static func add(c1: Complex, to c2: Complex) -> Complex {
+    private static func add(c1: Complex, to c2: Complex) -> Complex {
         return Complex(real: c1.real + c2.real, imag: c1.imag + c2.imag)
     }
     
-    static func subtract(c1: Complex, from c2: Complex) -> Complex {
+    private static func subtract(c1: Complex, from c2: Complex) -> Complex {
         return Complex(real: c1.real - c2.real, imag: c1.imag - c2.imag)
     }
     
-    static func multiply(c1: Complex, by c2: Complex) -> Complex {
+    private static func multiply(c1: Complex, by c2: Complex) -> Complex {
         return Complex(real: c1.real * c2.real - c1.imag * c2.imag, imag: c1.real * c2.imag + c1.imag * c2.real)
     }
     
-    static func divide(c1: Complex, by c2: Complex) -> Complex {
+    private static func divide(c1: Complex, by c2: Complex) -> Complex {
         return Complex(real: (c1.real * c2.real + c1.imag * c2.imag) / c2.magnitude, imag: (c1.imag * c2.real - c1.real * c2.imag) / c2.magnitude)
     }
     
-    static func readFromString(string: String) -> Complex? {
+    public static func readFromString(string: String) -> Complex? {
         var tokens = string.componentsSeparatedByString("i")
         
         if tokens.count > 0 {

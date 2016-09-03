@@ -9,15 +9,15 @@
 import Foundation
 
 public final class Fraction: CustomStringConvertible, MatrixData {
-    public let num: Int
-    public let den: Int
+    private let num: Int
+    private let den: Int
     
     public init() {
         self.num = 0
         self.den = 1
     }
     
-    init(num: Int, den: Int) {
+    public init(num: Int, den: Int) {
         assert(den != 0, "den can not be set to zero")
         
         var num = num
@@ -44,7 +44,7 @@ public final class Fraction: CustomStringConvertible, MatrixData {
         self.init(num: num, den: 1)
     }
     
-    var decimal: Float {
+    public var decimal: Float {
         get {
             return Float(self.num) / Float(self.den)
         }
@@ -60,39 +60,39 @@ public final class Fraction: CustomStringConvertible, MatrixData {
         return "\(self.num)/\(self.den)"
     }
     
-    func add(f: Fraction) -> Fraction {
+    private func add(f: Fraction) -> Fraction {
         return Fraction(num: self.num * f.den + self.den * f.num, den: self.den * f.den)
     }
     
-    func subtract(f: Fraction) -> Fraction {
+    private func subtract(f: Fraction) -> Fraction {
         return Fraction(num: self.num * f.den - self.den * f.num, den: self.den * f.den)
     }
     
-    func multiply(f: Fraction) -> Fraction {
+    private func multiply(f: Fraction) -> Fraction {
         return Fraction(num: self.num * f.num, den: self.den * f.den)
     }
     
-    func divide(f: Fraction) -> Fraction {
+    private func divide(f: Fraction) -> Fraction {
         return Fraction(num: self.num * f.den, den: self.den * f.num)
     }
     
-    static func add(f1: Fraction, to f2: Fraction) -> Fraction {
+    private static func add(f1: Fraction, to f2: Fraction) -> Fraction {
         return Fraction(num: f1.num * f2.den + f1.den * f2.num, den: f1.den * f2.den)
     }
     
-    static func subtract(f1: Fraction, from f2: Fraction) -> Fraction {
+    private static func subtract(f1: Fraction, from f2: Fraction) -> Fraction {
         return Fraction(num: f1.num * f2.den - f1.den * f2.num, den: f1.den * f2.den)
     }
     
-    static func multiply(f1: Fraction, by f2: Fraction) -> Fraction {
+    private static func multiply(f1: Fraction, by f2: Fraction) -> Fraction {
         return Fraction(num: f1.num * f2.num, den: f1.den * f2.den)
     }
     
-    static func divide(f1: Fraction, by f2: Fraction) -> Fraction {
+    private static func divide(f1: Fraction, by f2: Fraction) -> Fraction {
         return Fraction(num: f1.num * f2.den, den: f1.den * f2.num)
     }
     
-    static func readFromString(string: String) -> Fraction? {
+    public static func readFromString(string: String) -> Fraction? {
         var num: Int = 0
         var den: Int = 1
         

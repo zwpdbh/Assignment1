@@ -28,6 +28,6 @@ var test9 = TestMatricVector<Fraction>(row:10,col:10,seed:100)
  Flag:3, test positive number, which is larger than the maximum size of vector, when it visit matrix element
  Flag:4, test negative number when it visits vector element.
 
- test9.testmemoryleak()
+
  test9.checkborder_MRH(<#T##flag: Int##Int#>)
  */
