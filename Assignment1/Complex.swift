@@ -8,16 +8,16 @@
 
 import Foundation
 
-final class Complex: CustomStringConvertible, MatrixData {
-    var real: Float
-    var imag: Float
+public final class Complex: CustomStringConvertible, MatrixData {
+    internal var real: Float
+    internal var imag: Float
     
     // computed property
     var magnitude: Float {
         return real*real + imag*imag
     }
     
-    var description: String {
+    public var description: String {
         if self.imag < 0 {
             return "\(self.real)\(self.imag)i"
         } else if self.imag == 0 {
@@ -36,7 +36,7 @@ final class Complex: CustomStringConvertible, MatrixData {
         self.imag = imag
     }
     
-    convenience init() {
+    convenience public init() {
         self.init(real: 0, imag: 0)
     }
     
@@ -89,41 +89,39 @@ final class Complex: CustomStringConvertible, MatrixData {
 }
 
 
-func +(c1: Complex, c2: Complex) -> Complex {
+public func +(c1: Complex, c2: Complex) -> Complex {
     return Complex.add(c1, to: c2)
 }
 
-func -(c1: Complex, c2: Complex) -> Complex {
+public func -(c1: Complex, c2: Complex) -> Complex {
     return Complex.subtract(c1, from: c2)
 }
 
-func *(c1: Complex, c2: Complex) -> Complex {
+public func *(c1: Complex, c2: Complex) -> Complex {
     return Complex.multiply(c1, by: c2)
 }
 
-func /(c1: Complex, c2: Complex) -> Complex {
+public func /(c1: Complex, c2: Complex) -> Complex {
     return Complex.divide(c1, by: c2)
 }
 
-func +(c: Complex, x: Float) -> Complex {
+public func +(c: Complex, x: Float) -> Complex {
     return Complex.add(c, to: Complex(real: x, imag: 0))
 }
 
-func -(c: Complex, x: Float) -> Complex {
+public func -(c: Complex, x: Float) -> Complex {
     return Complex.subtract(c, from: Complex(real: x, imag: 0))
 }
 
-func *(c: Complex, x: Float) -> Complex {
+public func *(c: Complex, x: Float) -> Complex {
     return Complex.multiply(c, by: Complex(real: x, imag: 0))
 }
 
-func /(c: Complex, x: Float) -> Complex {
+public func /(c: Complex, x: Float) -> Complex {
     return Complex.divide(c, by: Complex(real: x, imag: 0))
 }
 
-
-
-func != (lhs:Complex, rhs:Complex) -> Bool{
+public func != (lhs:Complex, rhs:Complex) -> Bool{
     
     if(lhs.real==rhs.real && lhs.imag == rhs.imag){
         return false}

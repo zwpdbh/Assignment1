@@ -8,11 +8,11 @@
 
 import Foundation
 
-final class Fraction: CustomStringConvertible, MatrixData {
-    let num: Int
-    let den: Int
+public final class Fraction: CustomStringConvertible, MatrixData {
+    public let num: Int
+    public let den: Int
     
-    internal init() {
+    public init() {
         self.num = 0
         self.den = 1
     }
@@ -40,7 +40,7 @@ final class Fraction: CustomStringConvertible, MatrixData {
         self.den = den
     }
     
-    convenience init(num: Int) {
+    public convenience init(num: Int) {
         self.init(num: num, den: 1)
     }
     
@@ -50,7 +50,7 @@ final class Fraction: CustomStringConvertible, MatrixData {
         }
     }
     
-    internal var description: String {
+    public var description: String {
         if self.num == 0 {
             return "0"
         }
@@ -121,21 +121,21 @@ final class Fraction: CustomStringConvertible, MatrixData {
 /**
  + operator between two Fractions
  */
-func +(f1: Fraction, f2: Fraction) -> Fraction {
+public func +(f1: Fraction, f2: Fraction) -> Fraction {
     return f1.add(f2)
 }
 
 /**
  - operator between two Fractions
  */
-func -(f1: Fraction, f2: Fraction) -> Fraction {
+public func -(f1: Fraction, f2: Fraction) -> Fraction {
     return f1.subtract(f2)
 }
 
 /**
  * operator between two Fractions
  */
-func *(f1: Fraction, f2: Fraction) -> Fraction {
+public func *(f1: Fraction, f2: Fraction) -> Fraction {
     return f1.multiply(f2)
 }
 
@@ -143,11 +143,11 @@ func *(f1: Fraction, f2: Fraction) -> Fraction {
  / operator between two Fractions
  */
 
-func /(f1: Fraction, f2: Fraction) -> Fraction {
+public func /(f1: Fraction, f2: Fraction) -> Fraction {
     return f1.divide(f2)
 }
 
-func != (lhs:Fraction, rhs:Fraction) -> Bool{
+public func != (lhs:Fraction, rhs:Fraction) -> Bool{
     let minus=lhs-rhs
     if(minus.num == 0) {return false }
     else {return true};
